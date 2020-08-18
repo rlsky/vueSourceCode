@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title></title>
+  </head>
+  <body>
+    <div id="app">
+      <h2>{{person.name}}---{{person.age}}</h2>
+      <h3>{{person.fav}}</h3>
+      <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+      </ul>
+      <h3>{{msg}}</h3>
+      <div v-text="msg"></div>
+      <div v-text="person.name"></div>
+      <div v-html="htmlStr"></div>
+      <input type="text" v-model="msg" />
+      <button v-on:click="handlerClick">事件</button>
+      <button @click="handlerClick2">@事件</button>
+      <img v-bind:src="imgData" />
+      <img :src="imgData" />
+    </div>
+    <script src="./Observer.js"></script>
+    <script src="./Mvue.js"></script>
+    <script>
+      new Mvue({
+        el: "#app",
+        data: {
+          person: {
+            name: "阿拉蕾",
+            age: 18,
+            fav: "游泳",
+          },
+          msg: "学习MVVM实现原理",
+          htmlStr: "<p>html标签</p>",
+          imgData:
+            "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1856557621,3398589492&fm=26&gp=0.jpg",
+        },
+        methods: {
+          handlerClick() {
+            console.log(this, "v-开头的事件");
+          },
+          handlerClick2() {
+            console.log(this, "@开头的事件");
+            this.msg = "学习MVVM";
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
